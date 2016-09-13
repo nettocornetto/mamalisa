@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'pages#index'
   get 'pages/about_us' => 'pages#show'
-  get 'menu' => 'menu#index'
+  get 'menus' => 'menus#index'
 
 
   # Example of regular route:
@@ -57,4 +57,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+      namespace :admin do
+        resources :menus do
+          resources :categories do
+            resources :menu_items
+          end
+        end
+      end
 end
